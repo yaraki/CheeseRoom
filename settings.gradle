@@ -1,0 +1,5 @@
+include ':app-java',
+        ':app-start',
+        ':app-kotlin',
+        ':playground',
+        ':common'

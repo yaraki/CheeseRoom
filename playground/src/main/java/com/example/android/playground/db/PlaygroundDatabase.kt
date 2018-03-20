@@ -25,11 +25,7 @@ import android.arch.persistence.room.migration.Migration
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
-import com.example.android.playground.vo.Cheese
-import com.example.android.playground.vo.Follow
-import com.example.android.playground.vo.Message
-import com.example.android.playground.vo.MessageImage
-import com.example.android.playground.vo.User
+import com.example.android.playground.vo.*
 
 @Database(
         entities = [
@@ -37,9 +33,11 @@ import com.example.android.playground.vo.User
             Follow::class,
             Message::class,
             MessageImage::class,
-            Cheese::class
+            Cheese::class,
+            Author::class,
+            Book::class
         ],
-        version = 3)
+        version = 4)
 @TypeConverters(DateConverter::class)
 abstract class PlaygroundDatabase : RoomDatabase() {
 
@@ -91,6 +89,28 @@ abstract class PlaygroundDatabase : RoomDatabase() {
             }
         }
 
+        val MIGRATION_3_4 = object : Migration(3, 4) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("""
+                    CREATE TABLE `Author` (
+                      `id` INTEGER NOT NULL
+                    , `name` TEXT NOT NULL
+                    , PRIMARY KEY(`id`))
+                """)
+                database.execSQL("""
+                    CREATE TABLE `Book` (
+                      `id` INTEGER NOT NULL
+                    , `title` TEXT NOT NULL
+                    , `authorId` INTEGER NOT NULL
+                    , PRIMARY KEY(`id`)
+                    , FOREIGN KEY(`authorId`)
+                        REFERENCES `Author`(`id`)
+                        ON UPDATE NO ACTION
+                        ON DELETE NO ACTION )
+                """)
+            }
+        }
+
         @Volatile
         private var instance: PlaygroundDatabase? = null
 
@@ -99,7 +119,7 @@ abstract class PlaygroundDatabase : RoomDatabase() {
                 instance ?: synchronized(this) {
                     instance ?: Room
                             .databaseBuilder(context, PlaygroundDatabase::class.java, "pg.db")
-                            .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
+                            .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
                             .fallbackToDestructiveMigration()
                             .build()
                             .also { instance = it }
@@ -109,5 +129,6 @@ abstract class PlaygroundDatabase : RoomDatabase() {
 
     abstract fun user(): UserDao
     abstract fun message(): MessageDao
+    abstract fun book(): BookDao
 
 }

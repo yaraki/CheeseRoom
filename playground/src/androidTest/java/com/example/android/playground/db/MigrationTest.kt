@@ -99,4 +99,13 @@ class MigrationTest {
         }
     }
 
+    @Test
+    fun migrate3To4() {
+        val db3 = helper.createDatabase(DATABASE_NAME, 3)
+        db3.close()
+        val db4 = helper.runMigrationsAndValidate(DATABASE_NAME, 4, true,
+                PlaygroundDatabase.MIGRATION_3_4)
+        db4.close()
+    }
+
 }

@@ -16,7 +16,7 @@
 
 package com.example.android.playground.vo
 
-import android.arch.persistence.room.Relation
+import androidx.room.Relation
 import java.util.*
 
 data class MessageWithImages @JvmOverloads constructor(

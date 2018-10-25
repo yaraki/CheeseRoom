@@ -19,16 +19,16 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion versions.compileSdk
+    compileSdkVersion sdk.compile
 
     defaultConfig {
         applicationId "com.example.android.playground"
-        minSdkVersion versions.minSdk
-        targetSdkVersion versions.targetSdk
+        minSdkVersion sdk.min
+        targetSdkVersion sdk.target
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -50,24 +50,24 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     // Kotlin
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
 
-    implementation "com.android.support:support-annotations:$versions.support"
+    // Support Libraries
+    implementation "androidx.annotation:annotation:$versions.annotation"
 
     // Architecture Components
-    implementation "android.arch.lifecycle:extensions:$versions.lifecycle"
-    implementation "android.arch.persistence.room:runtime:$versions.room"
-    annotationProcessor "android.arch.persistence.room:compiler:$versions.room"
-    kapt "android.arch.persistence.room:compiler:$versions.room"
-    androidTestImplementation "android.arch.persistence.room:testing:$versions.room"
+    implementation "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle"
+    implementation "androidx.room:room-runtime:$versions.room"
+    annotationProcessor "androidx.room:room-compiler:$versions.room"
+    kapt "androidx.room:room-compiler:$versions.room"
+    androidTestImplementation "androidx.room:room-testing:$versions.room"
 
     // Tests
     testImplementation 'junit:junit:4.12'
     testImplementation "org.mockito:mockito-core:$versions.mockito"
+    androidTestImplementation "androidx.test.ext:junit:$versions.ext_junit"
     androidTestImplementation "org.mockito:mockito-android:$versions.mockito"
-    androidTestImplementation "com.android.support.test:runner:$versions.runner"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$versions.espresso"
+    androidTestImplementation "androidx.test:runner:$versions.runner"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espresso"
 }

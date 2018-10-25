@@ -16,7 +16,7 @@
 
 package com.example.android.playground.vo
 
-import android.arch.persistence.room.Embedded
+import androidx.room.Embedded
 import java.util.*
 
 /**

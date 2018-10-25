@@ -16,7 +16,7 @@
 
 package com.example.android.cheeseroom.repository;
 
-import android.arch.lifecycle.LiveData;
+import androidx.lifecycle.LiveData;
 import android.content.Context;
 
 import com.example.android.cheeseroom.api.CheeseApi;

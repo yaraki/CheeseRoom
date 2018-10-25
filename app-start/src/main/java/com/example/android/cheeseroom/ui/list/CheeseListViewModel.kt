@@ -17,8 +17,8 @@
 package com.example.android.cheeseroom.ui.list
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import com.example.android.cheeseroom.repository.CheeseRepository
 import com.example.android.cheeseroom.vo.Cheese
 

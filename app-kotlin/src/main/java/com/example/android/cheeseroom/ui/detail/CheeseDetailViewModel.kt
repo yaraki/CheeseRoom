@@ -17,10 +17,10 @@
 package com.example.android.cheeseroom.ui.detail
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.Transformations
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import com.example.android.cheeseroom.repository.CheeseRepository
 import com.example.android.cheeseroom.vo.Cheese
 

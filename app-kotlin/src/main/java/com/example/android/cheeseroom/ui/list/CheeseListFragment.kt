@@ -16,17 +16,17 @@
 
 package com.example.android.cheeseroom.ui.list
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.transition.Slide
-import android.support.v4.app.Fragment
-import android.support.v4.view.GravityCompat
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.transition.Slide
+import androidx.core.view.GravityCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.android.cheeseroom.R
 
 
@@ -63,13 +63,13 @@ class CheeseListFragment : Fragment() {
         view.findViewById<RecyclerView>(R.id.list).run {
             setHasFixedSize(true)
             layoutManager = GridLayoutManager(context, 2)
-            adapter = CheeseListAdapter(view.context, { cheeseId ->
+            adapter = CheeseListAdapter(view.context) { cheeseId ->
                 activity?.let {
                     if (!it.isFinishing) {
                         (it as Listener).onCheeseSelected(cheeseId)
                     }
                 }
-            }).also {
+            }.also {
                 this@CheeseListFragment.adapter = it
             }
         }

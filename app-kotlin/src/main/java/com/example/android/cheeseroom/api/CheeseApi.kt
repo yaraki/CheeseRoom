@@ -16,7 +16,7 @@
 
 package com.example.android.cheeseroom.api
 
-import android.support.annotation.WorkerThread
+import androidx.annotation.WorkerThread
 import com.example.android.cheeseroom.common.Cheeses
 import com.example.android.cheeseroom.vo.Cheese
 

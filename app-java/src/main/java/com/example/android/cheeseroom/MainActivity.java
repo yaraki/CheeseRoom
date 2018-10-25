@@ -17,7 +17,7 @@
 package com.example.android.cheeseroom;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.android.cheeseroom.ui.detail.CheeseDetailFragment;
 import com.example.android.cheeseroom.ui.list.CheeseListFragment;

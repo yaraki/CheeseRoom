@@ -16,20 +16,15 @@
 
 package com.example.android.playground.db
 
-import android.arch.lifecycle.Observer
-import android.arch.persistence.room.Room
-import android.support.test.InstrumentationRegistry
-import android.support.test.filters.SmallTest
-import android.support.test.runner.AndroidJUnit4
+import androidx.lifecycle.Observer
+import androidx.room.Room
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.SmallTest
+import androidx.test.platform.app.InstrumentationRegistry
 import com.example.android.playground.vo.Message
 import com.example.android.playground.vo.MessageImage
 import com.example.android.playground.vo.User
-import org.hamcrest.CoreMatchers.`is`
-import org.hamcrest.CoreMatchers.allOf
-import org.hamcrest.CoreMatchers.equalTo
-import org.hamcrest.CoreMatchers.not
-import org.hamcrest.CoreMatchers.notNullValue
-import org.hamcrest.CoreMatchers.nullValue
+import org.hamcrest.CoreMatchers.*
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.collection.IsCollectionWithSize.hasSize
 import org.hamcrest.core.IsCollectionContaining.hasItems
@@ -37,12 +32,8 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.ArgumentMatchers.any
 import org.mockito.ArgumentMatchers.eq
-import org.mockito.Mockito.argThat
-import org.mockito.Mockito.mock
-import org.mockito.Mockito.timeout
-import org.mockito.Mockito.verify
+import org.mockito.Mockito.*
 import java.util.*
 
 @RunWith(AndroidJUnit4::class)
@@ -53,7 +44,8 @@ class PlaygroundDatabaseTest {
 
     @Before
     fun openDatabase() {
-        database = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getContext(),
+        database = Room.inMemoryDatabaseBuilder(
+                InstrumentationRegistry.getInstrumentation().targetContext,
                 PlaygroundDatabase::class.java).build()
     }
 

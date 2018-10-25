@@ -17,7 +17,7 @@
 package com.example.android.cheeseroom.ui.list
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
+import androidx.lifecycle.AndroidViewModel
 import com.example.android.cheeseroom.repository.CheeseRepository
 
 

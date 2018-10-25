@@ -1,24 +1,30 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    ext.sdk = [
+            min    : 14,
+            target : 28,
+            compile: 28,
+    ]
     ext.versions = [
-            minSdk: 14,
-            targetSdk: 27,
-            compileSdk: 27,
-            kotlin: '1.2.61',
-            support: '27.1.1',
-            lifecycle: '1.1.1',
-            room: '1.1.1',
-            mockito: '2.19.0',
-            runner: '1.0.2',
-            espresso: '3.0.2',
+            kotlin    : '1.2.71',
+            annotation: '1.0.0',
+            appcompat : '1.0.0',
+            material  : '1.0.0',
+            recycler  : '1.0.0',
+            lifecycle : '2.0.0',
+            room      : '2.1.0-alpha01',
+            mockito   : '2.19.0',
+            ext_junit : '1.0.0',
+            runner    : '1.1.0-beta02',
+            espresso  : '3.1.0-beta02',
     ]
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath 'com.android.tools.build:gradle:3.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
     }
 }

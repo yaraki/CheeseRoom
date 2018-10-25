@@ -16,8 +16,8 @@
 
 package com.example.android.cheeseroom.repository
 
-import android.arch.lifecycle.LiveData
-import android.arch.persistence.room.Room
+import androidx.lifecycle.LiveData
+import androidx.room.Room
 import android.content.Context
 import com.example.android.cheeseroom.api.CheeseApi
 import com.example.android.cheeseroom.db.CheeseDatabase

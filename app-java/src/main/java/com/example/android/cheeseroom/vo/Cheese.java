@@ -16,10 +16,10 @@
 
 package com.example.android.cheeseroom.vo;
 
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
 
 import com.example.android.cheeseroom.common.Cheeses;
 

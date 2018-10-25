@@ -16,11 +16,11 @@
 
 package com.example.android.cheeseroom.db
 
-import android.arch.lifecycle.Observer
-import android.arch.persistence.room.Room
-import android.support.test.InstrumentationRegistry
-import android.support.test.filters.SmallTest
-import android.support.test.runner.AndroidJUnit4
+import androidx.lifecycle.Observer
+import androidx.room.Room
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.SmallTest
+import androidx.test.platform.app.InstrumentationRegistry
 import com.example.android.cheeseroom.vo.Cheese
 import org.hamcrest.CoreMatchers.`is`
 import org.junit.After
@@ -53,7 +53,8 @@ class CheeseDatabaseTest {
 
     @Before
     fun openDatabase() {
-        database = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getContext(),
+        database = Room.inMemoryDatabaseBuilder(
+                InstrumentationRegistry.getInstrumentation().targetContext,
                 CheeseDatabase::class.java).build()
     }
 
